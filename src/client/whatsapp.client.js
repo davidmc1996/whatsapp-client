@@ -1,7 +1,13 @@
 const { Client } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
 
-const WhatsappClient = new Client();
+const WhatsappClient = new Client({
+  puppeteer: {
+    args: [
+      '--no-sandbox',
+    ],
+  }
+});
 
 WhatsappClient.on('qr', (qr) => {
   // Generate and scan this code with your phone
